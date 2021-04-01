@@ -1,0 +1,27 @@
+{
+  "name": "cypressoutiscourse-gl",
+  "version": "1.0.0",
+  "description": "Automated software testing with Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl.git"
+  },
+  "keywords": [
+    "testing",
+    "cypress",
+    "automation"
+  ],
+  "author": "Juan Manuel Fonseca Solis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl/issues"
+  },
+  "homepage": "https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl#readme",
+  "dependencies": {
+    "cypress": "^6.8.0"
+  }
+}
