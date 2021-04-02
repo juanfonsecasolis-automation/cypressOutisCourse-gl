@@ -1,4 +1,4 @@
-# cypressOutisCourse
+# cypressOutisCourse-gl
 
 ## Author
 2021 Juan Fonseca Solis
@@ -11,4 +11,21 @@
 ```
 npm init
 npm install cypress
+npm install prettier
 ```
+
+# Run
+```
+npx cypress run
+npm run cy:open
+```
+
+# Folder structure
+* Texture: data used by tests
+* Folders: where tests are stored
+* Plugins: cypress extensions (e.g. Cucumber, extensions wrote by you)
+* Support: pre-run scripts for defining, for instance, custom commands
+
+# Parts of a test
+* Describe: a test
+* It: one test step
