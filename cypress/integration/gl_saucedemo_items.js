@@ -14,39 +14,22 @@ describe('Verify that the system arranges item by price from low to high', () =>
 
     it('should select the low-to-high filter', ()=>{
         cy.get('.product_sort_container').select('Price (low to high)')
+    })
+
+    it('should verify that price-1 is less than price-2', () => {
+
         cy.get('.inventory_item_price').eq(0).as('text1')
         cy.get('.inventory_item_price').eq(1).as('text2')
-
-        // Original idea: cy.get('@price1').should('be.lte',cy.get('@price2')) 
-        // Found idea: https://stackoverflow.com/questions/56223836/extracting-parts-of-a-text-in-cypress/56248002
-
+        
         cy.get('@text1').invoke('text').then((text) => {
-            var fullText = text;
             var pattern = /[0-9]+.[0-9]+/g;
-            var number = fullText.match(pattern)
-            console.log(number);
-            cy.wrap(number).as('price1')  
-        })
+            var price1 = text.match(pattern) 
 
-        cy.get('@text2').invoke('text').then((text) => {
-            var fullText = text;
-            var pattern = /[0-9]+.[0-9]+/g;
-            var number = fullText.match(pattern)
-            console.log(number);
-            cy.wrap(number).as('price2')  
+            cy.get('@text2').invoke('text').then((text) => {
+                var price2 = text.match(pattern)
+                expect(parseInt(price1)).to.be.lessThan(parseInt(price2))   // jest
+            })                  
         })
-
-        // que feo codigo
-        cy.get('@price1').then(($price1) => {
-            cy.get('@price2').should(($price2) => {
-                console.log($price1)
-                console.log($price2)
-                expect($price1).to.be.lessThan($price2)
-            })
-        })
- 
-        //expect(price1).to.be.lessThan(price2) // esto es jest, algo basico de JS?
-        //cy.get('@price1').should('be.lte',cy.get('@price2'))
     })
 
 })
@@ -107,8 +90,8 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
     })
 
     it('should verify that both items were added to the cart', () => {
-        cy.should('have.text','Sauce Labs Backpack')
-        cy.should('have.text','Sauce Labs Onesie')
+        cy.get('.inventory_item_name').contains('Sauce Labs Backpack').should('be.visible')
+        cy.get('.inventory_item_name').contains('Sauce Labs Onesie').should('be.visible')
     })
 })
 
