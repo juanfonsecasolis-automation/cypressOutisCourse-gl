@@ -2,14 +2,15 @@
 
 describe('Verify that the system arranges item by price from low to high', () => {
     
-    it('should visit the sauce demo webpage', () => {
-        cy.visit('https://www.saucedemo.com/',{timeout: 10000})
-    })
-    
-    it('should enter valid credentials',() => {
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')   
-        cy.get('#login-button').click()
+    it('should visit the webpage and enter valid credentials',() => {
+        cy.visit('/')
+        cy.fixture('user').then(user => {
+            const username = user.validUsername
+            const password = user.validPassword
+            cy.get('#user-name').type(username)
+            cy.get('#password').type(password)   
+            cy.get('#login-button').click()
+        })
     })
 
     it('should select the low-to-high filter', ()=>{
@@ -36,19 +37,15 @@ describe('Verify that the system arranges item by price from low to high', () =>
 
 describe('Verify that the cart badge reflects the number of items added in the cart', () => {
     
-    it('should visit the sauce demo webpage', () => {
-        cy.visit('https://www.saucedemo.com/',{timeout: 10000})
-    })
-
-    it('should enter valid credentials',() => {
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')   
-        cy.get('#login-button').click()
-    })
-
-    it('should check correct url',() => {
-        cy.wait(2000)
-        cy.url().should('include','/inventory.html')
+    it('should visit the webpage and enter valid credentials',() => {
+        cy.visit('/')
+        cy.fixture('user').then(user => {
+            const username = user.validUsername
+            const password = user.validPassword
+            cy.get('#user-name').type(username)
+            cy.get('#password').type(password)   
+            cy.get('#login-button').click()
+        })
     })
     
     it('should add two items to the cart', () => {
@@ -64,19 +61,15 @@ describe('Verify that the cart badge reflects the number of items added in the c
 
 describe('Verify items are added to the cart when hitting "Add to cart"', () => {
     
-    it('should visit the sauce demo webpage', () => {
-        cy.visit('https://www.saucedemo.com/',{timeout: 10000})
-    })
-
-    it('should enter valid credentials',() => {
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')   
-        cy.get('#login-button').click()
-    })
-
-    it('should check correct url',() => {
-        cy.wait(2000)
-        cy.url().should('include','/inventory.html')
+    it('should visit the webpage and enter valid credentials',() => {
+        cy.visit('/')
+        cy.fixture('user').then(user => {
+            const username = user.validUsername
+            const password = user.validPassword
+            cy.get('#user-name').type(username)
+            cy.get('#password').type(password)   
+            cy.get('#login-button').click()
+        })
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
@@ -96,15 +89,16 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
 })
 
 describe('Verify all items in the inventory page have an add-to-cart button', () => {
-    it('should visit the sauce demo webpage', () => {
-        cy.visit('https://www.saucedemo.com/',{timeout: 10000})
-        cy.waitFor(1000)
-    })
     
-    it('should enter valid credentials',() => {
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')   
-        cy.get('#login-button').click()
+    it('should visit the webpage and enter valid credentials',() => {
+        cy.visit('/')
+        cy.fixture('user').then(user => {
+            const username = user.validUsername
+            const password = user.validPassword
+            cy.get('#user-name').type(username)
+            cy.get('#password').type(password)   
+            cy.get('#login-button').click()
+        })
     })
 
     it('should verify that all listed items have an add-to-cart button',() => {

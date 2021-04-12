@@ -21,7 +21,7 @@ npm run cy:open
 ```
 
 # Folder structure
-* Texture: data used by tests
+* Fixture: static data (e.g. data used by tests)
 * Folders: where tests are stored
 * Plugins: cypress extensions (e.g. Cucumber, extensions wrote by you)
 * Support: pre-run scripts for defining, for instance, custom commands
