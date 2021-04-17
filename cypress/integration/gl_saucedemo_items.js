@@ -1,16 +1,29 @@
 // 2021 Juan Fonseca
 
+class InventoryPage{
+
+    static sortFromLowToHigh(){
+        cy.get('.product_sort_container').select('Price (low to high)')   
+    } 
+}
+
+class CartPage{
+
+    static loadCartPage(){
+        cy.get('.shopping_cart_badge').click()    
+    } 
+}
+
 describe('Verify that the system arranges item by price from low to high', () => {
     
-    it('should login with valid credentials',() => {
-        cy.loginWithValidCredentials()
+    it('should login', () => {
+        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
+        cy.loginWithValidCredentials()  
     })
 
-    it('should select the low-to-high filter', ()=>{
-        cy.get('.product_sort_container').select('Price (low to high)')
-    })
+    it('should sort item from low to high and verify that price1 is less than price2', () => {
 
-    it('should verify that price-1 is less than price-2', () => {
+        InventoryPage.sortFromLowToHigh()
 
         cy.get('.inventory_item_price').eq(0).as('text1')
         cy.get('.inventory_item_price').eq(1).as('text2')
@@ -30,8 +43,9 @@ describe('Verify that the system arranges item by price from low to high', () =>
 
 describe('Verify that the cart badge reflects the number of items added in the cart', () => {
     
-    it('should login with valid credentials',() => {
-        cy.loginWithValidCredentials()
+    it('should login', () => {
+        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
+        cy.loginWithValidCredentials() 
     })
     
     it('should add two items to the cart', () => {
@@ -48,7 +62,8 @@ describe('Verify that the cart badge reflects the number of items added in the c
 describe('Verify items are added to the cart when hitting "Add to cart"', () => {
     
     it('should login with valid credentials',() => {
-        cy.loginWithValidCredentials()
+        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
+        cy.loginWithValidCredentials() 
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
@@ -57,7 +72,7 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
     })
 
     it('should click on the basket icon located at the upper right', () => {
-        cy.get('.shopping_cart_badge').click()
+        CartPage.loadCartPage()
         cy.url().should('include','/cart.html')
     })
 
@@ -68,10 +83,11 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
 })
 
 describe('Verify all items in the inventory page have an add-to-cart button', () => {
-    
-    it('should login with valid credentials',() => {
+
+    it('should login', () => {
+        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
         cy.loginWithValidCredentials()
-    })  
+    })
 
     it('should verify that all listed items have an add-to-cart button',() => {
         cy.get('.pricebar > button').each(($el, index, $list) => {
