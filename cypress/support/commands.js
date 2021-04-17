@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginWithValidCredentials', () => {
+    cy.fixture('user').then(user => {
+        cy.login(user.validUsername, user.validPassword)
+    })
+})
+
+Cypress.Commands.add('loginWithInvalidCredentials', () => {
+    cy.fixture('user').then(user => {
+        cy.login(user.invalidUsername, user.invalidPassword)
+    })
+})
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.clearCookies()
+    cy.clearLocalStorage()
+    cy.visit('/')
+    cy.get('#user-name').type(username)
+    cy.get('#password').type(password)   
+    cy.get('#login-button').click()
+})

@@ -2,15 +2,8 @@
 
 describe('Verify that the system arranges item by price from low to high', () => {
     
-    it('should visit the webpage and enter valid credentials',() => {
-        cy.visit('/')
-        cy.fixture('user').then(user => {
-            const username = user.validUsername
-            const password = user.validPassword
-            cy.get('#user-name').type(username)
-            cy.get('#password').type(password)   
-            cy.get('#login-button').click()
-        })
+    it('should login with valid credentials',() => {
+        cy.loginWithValidCredentials()
     })
 
     it('should select the low-to-high filter', ()=>{
@@ -37,15 +30,8 @@ describe('Verify that the system arranges item by price from low to high', () =>
 
 describe('Verify that the cart badge reflects the number of items added in the cart', () => {
     
-    it('should visit the webpage and enter valid credentials',() => {
-        cy.visit('/')
-        cy.fixture('user').then(user => {
-            const username = user.validUsername
-            const password = user.validPassword
-            cy.get('#user-name').type(username)
-            cy.get('#password').type(password)   
-            cy.get('#login-button').click()
-        })
+    it('should login with valid credentials',() => {
+        cy.loginWithValidCredentials()
     })
     
     it('should add two items to the cart', () => {
@@ -61,15 +47,8 @@ describe('Verify that the cart badge reflects the number of items added in the c
 
 describe('Verify items are added to the cart when hitting "Add to cart"', () => {
     
-    it('should visit the webpage and enter valid credentials',() => {
-        cy.visit('/')
-        cy.fixture('user').then(user => {
-            const username = user.validUsername
-            const password = user.validPassword
-            cy.get('#user-name').type(username)
-            cy.get('#password').type(password)   
-            cy.get('#login-button').click()
-        })
+    it('should login with valid credentials',() => {
+        cy.loginWithValidCredentials()
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
@@ -90,16 +69,9 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
 
 describe('Verify all items in the inventory page have an add-to-cart button', () => {
     
-    it('should visit the webpage and enter valid credentials',() => {
-        cy.visit('/')
-        cy.fixture('user').then(user => {
-            const username = user.validUsername
-            const password = user.validPassword
-            cy.get('#user-name').type(username)
-            cy.get('#password').type(password)   
-            cy.get('#login-button').click()
-        })
-    })
+    it('should login with valid credentials',() => {
+        cy.loginWithValidCredentials()
+    })  
 
     it('should verify that all listed items have an add-to-cart button',() => {
         cy.get('.pricebar > button').each(($el, index, $list) => {
