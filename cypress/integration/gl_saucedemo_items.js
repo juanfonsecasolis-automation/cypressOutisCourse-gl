@@ -3,6 +3,7 @@
 class InventoryPage{
 
     static sortFromLowToHigh(){
+        cy.log('Sorting from low to high')
         cy.get('.product_sort_container').select('Price (low to high)')   
     } 
 }
@@ -10,6 +11,7 @@ class InventoryPage{
 class CartPage{
 
     static loadCartPage(){
+        cy.log('Loading Cart page')
         cy.get('.shopping_cart_badge').click()    
     } 
 }

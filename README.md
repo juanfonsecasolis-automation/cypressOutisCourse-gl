@@ -15,10 +15,9 @@ npm install prettier
 ```
 
 # Run
-```
-npx cypress run
-npm run cy:open
-```
+* To run in the UI and see the execution step by step: `npm run cy:open`
+* To run in command line and capture snapshots on failures: `npm run cy:run`
+* I don't remember what does this one: `npx cypress run`
 
 # Folder structure
 * Fixture: static data (e.g. data used by tests)
