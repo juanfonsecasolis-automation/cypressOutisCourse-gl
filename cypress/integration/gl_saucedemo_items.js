@@ -18,9 +18,8 @@ class CartPage{
 
 describe('Verify that the system arranges item by price from low to high', () => {
     
-    it('should login', () => {
-        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
-        cy.loginWithValidCredentials()  
+    before(function (){
+        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
     })
 
     it('should sort item from low to high and verify that price1 is less than price2', () => {
@@ -45,9 +44,8 @@ describe('Verify that the system arranges item by price from low to high', () =>
 
 describe('Verify that the cart badge reflects the number of items added in the cart', () => {
     
-    it('should login', () => {
-        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
-        cy.loginWithValidCredentials() 
+    before(function (){
+        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
     })
     
     it('should add two items to the cart', () => {
@@ -63,9 +61,8 @@ describe('Verify that the cart badge reflects the number of items added in the c
 
 describe('Verify items are added to the cart when hitting "Add to cart"', () => {
     
-    it('should login with valid credentials',() => {
-        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
-        cy.loginWithValidCredentials() 
+    before(function (){
+        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
@@ -86,9 +83,8 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
 
 describe('Verify all items in the inventory page have an add-to-cart button', () => {
 
-    it('should login', () => {
-        // using this instead of class LoginPage.loginWithValidCredentials() by a visibility issue
-        cy.loginWithValidCredentials()
+    before(function (){
+        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
     })
 
     it('should verify that all listed items have an add-to-cart button',() => {
