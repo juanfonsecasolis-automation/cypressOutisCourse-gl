@@ -44,5 +44,9 @@ describe('Verify system handles valid credentials',() => {
     it('should count a maximum of 6 items displayed',() => {
         cy.get('.inventory_item').its('length').should('eq',6)
     })
+    
+    after(function (){  // hook
+        cy.logout()
+    })
 
 })
