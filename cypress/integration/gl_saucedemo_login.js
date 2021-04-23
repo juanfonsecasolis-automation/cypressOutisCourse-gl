@@ -20,7 +20,7 @@ class LoginPage extends BasePage {
     }
 }
 
-describe('Verify system handles invalid credentials', () => {
+describe('Test 1: verify that the system handles invalid credentials', () => {
 
     it('should stay in the same page even using invalid credentials', () => {
         LoginPage.loginWithInvalidCredentials()
@@ -34,7 +34,20 @@ describe('Verify system handles invalid credentials', () => {
     })
 })
 
-describe('Verify system handles valid credentials',() => {
+describe('Test 2: verify that the system handles valid credentials on mobile view',() => {
+    
+    it('should login and check that url points to the inventory',() => {
+        LoginPage.loginWithValidCredentials()
+        cy.url().should('include','/inventory.html')
+    })
+    
+    after(function (){  // hook
+        cy.logout()
+    })
+
+})
+
+describe('Test 3: verify only 6 items are be displayed in the products webpage',() => {
     
     it('should login and check that url points to the inventory',() => {
         LoginPage.loginWithValidCredentials()
