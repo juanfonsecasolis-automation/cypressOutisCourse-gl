@@ -5,8 +5,8 @@
   "pageLoadTimeout": 60000,
   "requestTimeout": 15000,
   "responseTimeout": 15000,
-  "video": false,
   "failOnStatusCode": false,
   "screenshotOnRunFailure": true,
-  "projectId": "txibq4"
+  "projectId": "txibq4",
+  "video":true
 }
