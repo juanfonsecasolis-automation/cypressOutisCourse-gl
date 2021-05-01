@@ -24,15 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (username, password) => {
-    cy.clearCookies()
-    cy.clearLocalStorage()
-    cy.visit('/')
-    cy.get('#user-name').type(username)
-    cy.get('#password').type(password)   
-    cy.get('#login-button').click()
-})
-
 Cypress.Commands.add('loginWithValidCredentials', () => {
     cy.fixture('user').then(user => {
         cy.login(user.validUsername, user.validPassword)    // defined on commands.js
@@ -42,4 +33,13 @@ Cypress.Commands.add('loginWithValidCredentials', () => {
 Cypress.Commands.add('logout', () => {
     cy.get('#react-burger-menu-btn').click()
     cy.get('#logout_sidebar_link').click()
+})
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.clearCookies()
+    cy.clearLocalStorage()
+    cy.visit('/')
+    cy.get('#user-name').type(username)
+    cy.get('#password').type(password)   
+    cy.get('#login-button').click()
 })

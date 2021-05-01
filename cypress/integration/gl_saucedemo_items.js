@@ -1,20 +1,7 @@
 // 2021 Juan Fonseca
 
-class InventoryPage{
-
-    static sortFromLowToHigh(){
-        cy.log('Sorting from low to high')
-        cy.get('.product_sort_container').select('Price (low to high)')   
-    } 
-}
-
-class CartPage{
-
-    static loadCartPage(){
-        cy.log('Loading Cart page')
-        cy.get('.shopping_cart_badge').click()    
-    } 
-}
+import InventoryPage from './Classes/InventoryPage';
+import CartPage from './Classes/CartPage';
 
 describe('Test 4: verify all items in the inventory page have an add-to-cart button', () => {
 
