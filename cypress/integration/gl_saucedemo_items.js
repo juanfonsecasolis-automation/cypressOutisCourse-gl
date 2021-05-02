@@ -15,7 +15,7 @@ describe('Test 4: verify all items in the inventory page have an add-to-cart but
         })
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 })
@@ -44,7 +44,7 @@ describe('Test 5: verify that the system arranges item by price from low to high
         })
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 
@@ -66,7 +66,7 @@ describe('Test 6: verify that the cart badge reflects the number of items added 
         cy.get('.shopping_cart_badge').contains('2')
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 })
@@ -92,7 +92,7 @@ describe('Test 7: verify items are added to the cart when hitting "Add to cart"'
         cy.get('.inventory_item_name').contains('Sauce Labs Onesie').should('be.visible')
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 })

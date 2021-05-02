@@ -23,7 +23,7 @@ describe('Test 2: verify that the system handles valid credentials on mobile vie
         cy.url().should('include','/inventory.html')
     })
     
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 
@@ -40,7 +40,7 @@ describe('Test 3: verify only 6 items are be displayed in the products webpage',
         cy.get('.inventory_item').its('length').should('eq',6)
     })
     
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 
