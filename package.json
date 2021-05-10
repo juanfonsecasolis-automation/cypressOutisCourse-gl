@@ -8,7 +8,7 @@
     "cy:run:chrome": "cypress run --browser chrome",
     "cy:run:firefox": "cypress run --browser firefox",
     "cy:run:electron": "cypress run --browser electron",
-    "cy:run-dashboard":"cypress run --record --key 441cb098-1bcc-4b0b-b6a7-578c1eb1869a"
+    "cy:run-dashboard": "cypress run --record --key 441cb098-1bcc-4b0b-b6a7-578c1eb1869a"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
   "keywords": [
     "testing",
     "cypress",
-    "automation"
+    "automation",
+    "api",
+    "BDD"
   ],
   "author": "Juan Manuel Fonseca Solis",
   "license": "ISC",
@@ -26,9 +28,11 @@
   },
   "homepage": "https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl#readme",
   "dependencies": {
+    "cypress": "^7.2.0",
+    "cypress-cucumber-preprocessor": "^2.5.5",
     "prettier": "^2.2.1"
   },
-  "devDependencies": {
-    "cypress": "^7.0.1"
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
