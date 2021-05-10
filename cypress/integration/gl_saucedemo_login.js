@@ -1,26 +1,8 @@
 // 2021 Juan Fonseca
 
-class BasePage{}
+import LoginPage from './Classes/LoginPage';
 
-class LoginPage extends BasePage {
-    
-    static loginWithValidCredentials(){
-        cy.viewport('samsung-note9')
-        cy.fixture('user').then(user => {
-            cy.log('Login with valid user')
-            cy.login(user.validUsername, user.validPassword)    // defined on commands.js
-        })
-    }
-
-    static loginWithInvalidCredentials(){
-        cy.fixture('user').then(user => {
-            cy.log('Login with invalid user')
-            cy.login(user.invalidUsername, user.invalidPassword) // defined on commands.js
-        })
-    }
-}
-
-describe('Verify system handles invalid credentials', () => {
+describe('Test 1: verify that the system handles invalid credentials', () => {
 
     it('should stay in the same page even using invalid credentials', () => {
         LoginPage.loginWithInvalidCredentials()
@@ -34,7 +16,20 @@ describe('Verify system handles invalid credentials', () => {
     })
 })
 
-describe('Verify system handles valid credentials',() => {
+describe('Test 2: verify that the system handles valid credentials on mobile view',() => {
+    
+    it('should login and check that url points to the inventory',() => {
+        LoginPage.loginWithValidCredentials()
+        cy.url().should('include','/inventory.html')
+    })
+    
+    after(function (){  // this is a hook
+        cy.logout()
+    })
+
+})
+
+describe('Test 3: verify only 6 items are be displayed in the products webpage',() => {
     
     it('should login and check that url points to the inventory',() => {
         LoginPage.loginWithValidCredentials()
@@ -45,7 +40,7 @@ describe('Verify system handles valid credentials',() => {
         cy.get('.inventory_item').its('length').should('eq',6)
     })
     
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 

@@ -1,25 +1,29 @@
 // 2021 Juan Fonseca
 
-class InventoryPage{
+import InventoryPage from './Classes/InventoryPage';
+import CartPage from './Classes/CartPage';
 
-    static sortFromLowToHigh(){
-        cy.log('Sorting from low to high')
-        cy.get('.product_sort_container').select('Price (low to high)')   
-    } 
-}
+describe('Test 4: verify all items in the inventory page have an add-to-cart button', () => {
 
-class CartPage{
+    before(function (){
+        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+    })
 
-    static loadCartPage(){
-        cy.log('Loading Cart page')
-        cy.get('.shopping_cart_badge').click()    
-    } 
-}
+    it('should verify that all listed items have an add-to-cart button',() => {
+        cy.get('.pricebar > button').each(($el, index, $list) => {
+            cy.wrap($el).should('have.text','Add to cart')
+        })
+    })
 
-describe('Verify that the system arranges item by price from low to high', () => {
+    after(function (){  // this is a hook
+        cy.logout()
+    })
+})
+
+describe('Test 5: verify that the system arranges item by price from low to high', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // (hook) using custom command on this hook as PageLogin is not visible
+        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
     })
 
     it('should sort item from low to high and verify that price1 is less than price2', () => {
@@ -40,16 +44,16 @@ describe('Verify that the system arranges item by price from low to high', () =>
         })
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 
 })
 
-describe('Verify that the cart badge reflects the number of items added in the cart', () => {
+describe('Test 6: verify that the cart badge reflects the number of items added in the cart', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
+        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
     })
     
     it('should add two items to the cart', () => {
@@ -62,15 +66,15 @@ describe('Verify that the cart badge reflects the number of items added in the c
         cy.get('.shopping_cart_badge').contains('2')
     })
 
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 })
 
-describe('Verify items are added to the cart when hitting "Add to cart"', () => {
+describe('Test 7: verify items are added to the cart when hitting "Add to cart"', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
+        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
@@ -88,24 +92,7 @@ describe('Verify items are added to the cart when hitting "Add to cart"', () => 
         cy.get('.inventory_item_name').contains('Sauce Labs Onesie').should('be.visible')
     })
 
-    after(function (){  // hook
-        cy.logout()
-    })
-})
-
-describe('Verify all items in the inventory page have an add-to-cart button', () => {
-
-    before(function (){
-        cy.loginWithValidCredentials()  // using custom command on this hook as PageLogin is not visible
-    })
-
-    it('should verify that all listed items have an add-to-cart button',() => {
-        cy.get('.pricebar > button').each(($el, index, $list) => {
-            cy.wrap($el).should('have.text','Add to cart')
-        })
-    })
-
-    after(function (){  // hook
+    after(function (){  // this is a hook
         cy.logout()
     })
 })
