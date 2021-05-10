@@ -18,22 +18,22 @@ npm install cypress cypress-cucumber-preprocessor # for Cucumber BDD
 # Run
 * To run in the UI and see the execution step by step: `npm run cy:open`
 * To run in command line and capture snapshots on failures: `npm run cy:run:chrome`
-* I don't remember what this one does: `npx cypress run`
+* To run in command line and ?: `npx cypress run`
 
 # Folder structure
-* Fixture: static data (e.g. data used by tests)
-* Folders: where tests are stored
-* Plugins: cypress extensions specified in the index.js (e.g. Cucumber, extensions wrote by you)
-* Support: pre-run scripts for defining (for instance, custom commands)
+* **Fixture:** static data (e.g. data used by tests)
+* **Folders:** where tests are stored
+* **Plugins:** cypress extensions specified in the index.js (e.g. Cucumber, extensions wrote by you)
+* **Support:** pre-run scripts for defining (for instance, custom commands)
 
 # Parts of a test
-* Describe: a test
-* It: one test step
+* `describe` (a test)
+* `it` (one test step)
 
 # CI/CD
-* **Continous integration (CI):** 
+**Continous integration (CI):** 
 > "process of automatically detecting, pulling, building, and automated testing the changes in the code. CI is the activity that start the pipeline." - Kaniel Outis
-* **Continuous delivery (CD):** 
+**Continuous delivery (CD):** 
 > "overall chain of processes that automatically gets source code changes and runs them through build, test, packaging, and related operations to produce a deployable release, largely without human intervention." - Kaniel Outis
 
 # Jenkins
