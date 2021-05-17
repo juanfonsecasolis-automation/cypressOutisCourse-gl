@@ -8,5 +8,6 @@
   "failOnStatusCode": false,
   "screenshotOnRunFailure": false,
   "projectId": "txibq4",
-  "video":false
+  "video":false,
+  "ignoreTestFiles": ["*.md"] 
 }
