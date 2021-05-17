@@ -1,25 +1,34 @@
 import BasePage from './BasePage';
 
+const usernameField = '#user-name'
+const passwordField = '#password'
+const loginButton = '#login-button'
+
 class LoginPage extends BasePage {
     
+    static loginWithCredentials(username, password){
+        cy.viewport('samsung-note9')
+        cy.clearCookies()
+        cy.clearLocalStorage()
+        cy.visit('/')
+        cy.get(usernameField).type(username)
+        cy.get(passwordField).type(password)   
+        cy.get(loginButton).click()
+    }
+
     static loginWithValidCredentials(){
         cy.viewport('samsung-note9')
         cy.fixture('user').then(user => {
             cy.log('Login with valid user')
-            loginWithCredentials(user.validUsername, user.validPassword)
+            this.loginWithCredentials(user.validUsername, user.validPassword)
         })
     }
 
     static loginWithInvalidCredentials(){
         cy.fixture('user').then(user => {
             cy.log('Login with invalid user')
-            loginWithCredentials(user.invalidUsername, user.invalidPassword)
+            this.loginWithCredentials(user.invalidUsername, user.invalidPassword)
         })
-    }
-
-    static loginWithCredentials(username, password){
-        cy.viewport('samsung-note9')
-        cy.login(username, password)    // defined on commands.js
     }
 }
 
