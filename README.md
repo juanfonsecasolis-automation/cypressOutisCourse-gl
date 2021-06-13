@@ -19,6 +19,7 @@ npm install cypress cypress-cucumber-preprocessor # for Cucumber BDD
 * To run in the UI and see the execution step by step: `npm run cy:open`
 * To run in command line and capture snapshots on failures: `npm run cy:run:chrome`
 * To run in command line and ?: `npx cypress run`
+* To run Cypress Dashboard execute `cy:run-dashboard`.
 
 # Folder structure
 * **Fixture:** static data (e.g. data used by tests)

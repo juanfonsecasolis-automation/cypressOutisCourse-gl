@@ -34,12 +34,3 @@ Cypress.Commands.add('logout', () => {
     cy.get('#react-burger-menu-btn').click()
     cy.get('#logout_sidebar_link').click()
 })
-
-Cypress.Commands.add('login', (username, password) => {
-    cy.clearCookies()
-    cy.clearLocalStorage()
-    cy.visit('/')
-    cy.get('#user-name').type(username)
-    cy.get('#password').type(password)   
-    cy.get('#login-button').click()
-})
