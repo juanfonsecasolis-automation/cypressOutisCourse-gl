@@ -3,6 +3,8 @@
 ## Author
 2021 Juan Fonseca Solis
 
+![Cypress test framework](https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl/workflows/Cypress%20test%20framework/badge.svg?branch=master)
+
 ## Description
 * Repository for the assignments of the course https://gorillalogic.udemy.com/course/automated-testing-with-cypress
 * For managing multiple accounts in the same machine see https://gist.github.com/jexchan/2351996
@@ -72,13 +74,14 @@ To run the Docker file of the project run `docker build -t cypress .`
 # After feedback by E. Duarte and O. Valerio at 06/14/21  
 * Checked failed TCs.
 * Set API URL using `Cypress.env('')` on Cypress.json
-* Moved all locators to Page classes to follow POM
+* Moved all locators to Page classes to follow POM ("Pages" stand for locators, and "Models" for tests, then, what are "Objects"?)
 * Removed unused commands defined on commands.js
+* Added control to ignore non-test files
+* Use cy.log to decrease the number of logs by using '--quiet'
 
 Pending:
 * For Jenkins, add a stage to clone the repository
-* Install Jenkins on a docker containe
-* Use cy.log to decrease the number of logs
+* Install Jenkins on a docker container
 * Check what functionalities of Cypress Dashboard are free (concurrency?)
 * Investigate Chai and Mocha as alternatives for Jest
 * Investigate about Selenide? (https://selenide.org/documentation.html)
