@@ -71,11 +71,11 @@ To run the Docker file of the project run `docker build -t cypress .`
 
 # After feedback by E. Duarte and O. Valerio at 06/14/21  
 * Checked failed TCs.
+* Set API URL using `Cypress.env('')` on Cypress.json
 
 Pending:
 * For Jenkins, add a stage to clone the repository
-* Install Jenkins on a docker container
-* Do not hard code the API URL, use `Cypress.env('')` instead on Cypress.json
+* Install Jenkins on a docker containe
 * Check commands on commands.js to be reused on POM
 * Use cy.log to decrease the number of logs
 * Check what functionalities of Cypress Dashboard are free (concurrency?)
