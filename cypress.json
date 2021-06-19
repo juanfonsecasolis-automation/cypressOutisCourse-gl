@@ -9,5 +9,9 @@
   "screenshotOnRunFailure": false,
   "projectId": "txibq4",
   "video":false,
-  "ignoreTestFiles": ["*.md"] 
+  "ignoreTestFiles": ["*.md"],
+  "env":{
+    "apiBaseUrl": "https://reqres.in/api",
+    "webBaseUrl": "https://www.saucedemo.com/"
+  }
 }
