@@ -11,7 +11,7 @@ describe('Test 1: verify that the system handles invalid credentials', () => {
     
     it('should get an error message',() => {
         cy.readFile('testData.json').its('invalidLoginMessage').then(text => {
-            cy.get('h3').contains(text)
+            cy.get('h3').contains(text) // this can go to the POM
         })
     })
 })

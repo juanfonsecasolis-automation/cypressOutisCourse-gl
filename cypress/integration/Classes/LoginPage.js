@@ -17,7 +17,7 @@ class LoginPage extends BasePage {
     }
 
     static loginWithValidCredentials(){
-        cy.viewport('samsung-note9')
+        cy.viewport('samsung-note9')    // sacar del POM si no va a ser algo propio 
         cy.fixture('user').then(user => {
             cy.log('Login with valid user')
             this.loginWithCredentials(user.validUsername, user.validPassword)

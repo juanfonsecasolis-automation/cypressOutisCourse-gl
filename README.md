@@ -68,3 +68,16 @@ docker run hello-world
 ```
 
 To run the Docker file of the project run `docker build -t cypress .`
+
+# After feedback by E. Duarte and O. Valerio at 06/14/21  
+* Checked failed TCs.
+
+Pending:
+* For Jenkins, add a stage to clone the repository
+* Install Jenkins on a docker container
+* Do not hard code the API URL, use `Cypress.env('')` instead on Cypress.json
+* Check commands on commands.js to be reused on POM
+* Use cy.log to decrease the number of logs
+* Check what functionalities of Cypress Dashboard are free (concurrency?)
+* Investigate Chai and Mocha as alternatives for Jest
+* Investigate about selenide? (https://selenide.org/documentation.html)

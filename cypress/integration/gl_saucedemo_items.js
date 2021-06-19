@@ -2,11 +2,14 @@
 
 import InventoryPage from './Classes/InventoryPage';
 import CartPage from './Classes/CartPage';
+import LoginPage from './Classes/LoginPage';
 
 describe('Test 4: verify all items in the inventory page have an add-to-cart button', () => {
 
     before(function (){
-        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+        LoginPage.loginWithValidCredentials()
+        //.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+        cy.log('Log extra')
     })
 
     it('should verify that all listed items have an add-to-cart button',() => {
