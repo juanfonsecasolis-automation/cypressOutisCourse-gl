@@ -1,5 +1,6 @@
 // 2021 Juan Fonseca
 
+import InventoryPage from './Classes/InventoryPage';
 import LoginPage from './Classes/LoginPage';
 
 describe('Test 1: verify that the system handles invalid credentials', () => {
@@ -10,10 +11,10 @@ describe('Test 1: verify that the system handles invalid credentials', () => {
     })
     
     it('should get an error message',() => {
-        cy.readFile('testData.json').its('invalidLoginMessage').then(text => {
-            cy.get('h3').contains(text) // this can go to the POM
+        cy.readFile('testData.json').its('invalidLoginMessage').then(errorMessageExpected => {
+            LoginPage.getErrorMessageContainer().contains(errorMessageExpected)
         })
-    })
+     })
 })
 
 describe('Test 2: verify that the system handles valid credentials on mobile view',() => {
@@ -37,7 +38,7 @@ describe('Test 3: verify only 6 items are be displayed in the products webpage',
     })
 
     it('should count a maximum of 6 items displayed',() => {
-        cy.get('.inventory_item').its('length').should('eq',6)
+        InventoryPage.getInventoryItems().its('length').should('eq',6)
     })
     
     after(function (){  // this is a hook

@@ -5,9 +5,8 @@ let userID; // created user ID to be deleted to hide my name
 describe('Test 8: Verify pagination returns the same number of items specified on the "per_page" property (GET)', () => {
 
     it('should invoke the GET request and verify per_page users were returned', () => {
-        // TODO: find a way to add a second baseUrl (like $ npm run cypress:open --config "baseUrl=myUrl")
+
         cy.request(Cypress.env("apiBaseUrl")+'/users?delay=3').then((response) => {  
-        //cy.request('https://reqres.in/api/users?delay=3').then((response) => {   
             expect(response.status).to.eq(200)
             expect(response.body).property('data').property('length')
                 .eq(response.body.per_page)
@@ -81,7 +80,6 @@ describe('Test 12: verify that users can be partially updated (PATCH)', () => {
             expect(response.status).to.eq(200)
             cy.log(JSON.stringify(response.body))
             expect(response.body.name).to.eq('jfonseca_reloaded_test')
-            //expect(response.body.job).to.eq('tester')
             cy.log(`Updated user with ID ${userID}`)
         })
     })

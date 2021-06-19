@@ -3,6 +3,7 @@ import BasePage from './BasePage';
 const usernameField = '#user-name'
 const passwordField = '#password'
 const loginButton = '#login-button'
+const errorMessageDiv = '.error-message-container'
 
 class LoginPage extends BasePage {
     
@@ -29,6 +30,10 @@ class LoginPage extends BasePage {
             cy.log('Login with invalid user')
             this.loginWithCredentials(user.invalidUsername, user.invalidPassword)
         })
+    }
+
+    static getErrorMessageContainer(){
+        return cy.get(errorMessageDiv)
     }
 }
 

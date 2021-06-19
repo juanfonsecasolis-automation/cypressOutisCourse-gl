@@ -6,10 +6,10 @@
   "requestTimeout": 15000,
   "responseTimeout": 15000,
   "failOnStatusCode": false,
-  "screenshotOnRunFailure": false,
+  "screenshotOnRunFailure": true,
   "projectId": "txibq4",
   "video":false,
-  "ignoreTestFiles": ["*.md"],
+  "ignoreTestFiles": ["*.md", "**/Classes/*.js", "**/common/*.js"],
   "env":{
     "apiBaseUrl": "https://reqres.in/api",
     "webBaseUrl": "https://www.saucedemo.com/"

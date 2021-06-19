@@ -1,4 +1,4 @@
-name: Github pipeline
+name: Cypress test framework
 
 on:
   push:
@@ -13,8 +13,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Cypress run
+    - name: Cypress install
       uses: cypress-io/github-action@v2
       with:
         build: npm install cypress --save-dev
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
         start: npm run cy:run
+    

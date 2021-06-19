@@ -6,9 +6,10 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "cy:runquiet": "cypress run --quiet",
     "cy:run:chrome": "cypress run --browser chrome --headless",
     "cy:run:firefox": "cypress run --browser firefox --headless",
-    "cy:run:electron": "cypress run --browser electron",
+    "cy:run:electron": "cypress run --browser electron --headless",
     "cy:run-dashboard": "cypress run --record --key 441cb098-1bcc-4b0b-b6a7-578c1eb1869a"
   },
   "repository": {
