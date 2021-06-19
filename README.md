@@ -3,7 +3,7 @@
 ## Author
 2021 Juan Fonseca Solis
 
-![Cypress test framework](https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl/workflows/Cypress%20test%20framework/badge.svg?branch=master)
+[![Cypress test framework](https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl/actions/workflows/main.yml/badge.svg)](https://github.com/juanfonsecasolis-gl/cypressOutisCourse-gl/actions/workflows/main.yml)
 
 ## Description
 * Repository for the assignments of the course https://gorillalogic.udemy.com/course/automated-testing-with-cypress
