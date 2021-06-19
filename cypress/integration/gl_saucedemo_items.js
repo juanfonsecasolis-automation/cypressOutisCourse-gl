@@ -8,12 +8,11 @@ describe('Test 4: verify all items in the inventory page have an add-to-cart but
 
     before(function (){
         LoginPage.loginWithValidCredentials()
-        //.loginWithValidCredentials()  // TODO: find a way to use PageLogin
         cy.log('Log extra')
     })
 
     it('should verify that all listed items have an add-to-cart button',() => {
-        cy.get('.pricebar > button').each(($el, index, $list) => {
+        InventoryPage.getAddToCartButton().each(($el, index, $list) => {
             cy.wrap($el).should('have.text','Add to cart')
         })
     })
@@ -26,15 +25,14 @@ describe('Test 4: verify all items in the inventory page have an add-to-cart but
 describe('Test 5: verify that the system arranges item by price from low to high', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+        LoginPage.loginWithValidCredentials() 
     })
 
     it('should sort item from low to high and verify that price1 is less than price2', () => {
 
         InventoryPage.sortFromLowToHigh()
-
-        cy.get('.inventory_item_price').eq(0).as('text1')
-        cy.get('.inventory_item_price').eq(1).as('text2')
+        InventoryPage.getItemPrices().eq(0).as('text1')
+        InventoryPage.getItemPrices().eq(1).as('text2')
         
         cy.get('@text1').invoke('text').then((text) => {
             var pattern = /[0-9]+.[0-9]+/g;
@@ -56,17 +54,17 @@ describe('Test 5: verify that the system arranges item by price from low to high
 describe('Test 6: verify that the cart badge reflects the number of items added in the cart', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+        LoginPage.loginWithValidCredentials() 
     })
     
     it('should add two items to the cart', () => {
-        cy.get('#add-to-cart-sauce-labs-backpack').contains('Add to cart').click()
-        cy.get('#add-to-cart-sauce-labs-onesie').contains('Add to cart').click()
+        InventoryPage.addToTheCartItem('backpack')
+        InventoryPage.addToTheCartItem('onesie')
     })
 
     it('should verify that the cart badge says 2', () => {
         cy.wait(1000)
-        cy.get('.shopping_cart_badge').contains('2')
+        InventoryPage.getShoppingCartBadge().contains('2')
     })
 
     after(function (){  // this is a hook
@@ -77,12 +75,12 @@ describe('Test 6: verify that the cart badge reflects the number of items added 
 describe('Test 7: verify items are added to the cart when hitting "Add to cart"', () => {
     
     before(function (){
-        cy.loginWithValidCredentials()  // TODO: find a way to use PageLogin
+        LoginPage.loginWithValidCredentials() 
     })
     
     it('should click on the "Add to cart" button of the "Sauce Labs Backpack" and "Sauce Labs Onesie" items', () => {
-        cy.get('#add-to-cart-sauce-labs-backpack').contains('Add to cart').click()
-        cy.get('#add-to-cart-sauce-labs-onesie').contains('Add to cart').click()
+        InventoryPage.addToTheCartItem('backpack')
+        InventoryPage.addToTheCartItem('onesie')
     })
 
     it('should click on the basket icon located at the upper right', () => {
@@ -91,8 +89,8 @@ describe('Test 7: verify items are added to the cart when hitting "Add to cart"'
     })
 
     it('should verify that both items were added to the cart', () => {
-        cy.get('.inventory_item_name').contains('Sauce Labs Backpack').should('be.visible')
-        cy.get('.inventory_item_name').contains('Sauce Labs Onesie').should('be.visible')
+        InventoryPage.getInventoryItemNameElement().contains('Sauce Labs Backpack').should('be.visible')
+        InventoryPage.getInventoryItemNameElement().contains('Sauce Labs Onesie').should('be.visible')
     })
 
     after(function (){  // this is a hook

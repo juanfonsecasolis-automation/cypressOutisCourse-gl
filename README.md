@@ -72,12 +72,13 @@ To run the Docker file of the project run `docker build -t cypress .`
 # After feedback by E. Duarte and O. Valerio at 06/14/21  
 * Checked failed TCs.
 * Set API URL using `Cypress.env('')` on Cypress.json
+* Moved all locators to Page classes to follow POM
+* Removed unused commands defined on commands.js
 
 Pending:
 * For Jenkins, add a stage to clone the repository
 * Install Jenkins on a docker containe
-* Check commands on commands.js to be reused on POM
 * Use cy.log to decrease the number of logs
 * Check what functionalities of Cypress Dashboard are free (concurrency?)
 * Investigate Chai and Mocha as alternatives for Jest
-* Investigate about selenide? (https://selenide.org/documentation.html)
+* Investigate about Selenide? (https://selenide.org/documentation.html)
